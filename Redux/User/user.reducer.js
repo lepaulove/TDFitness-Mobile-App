@@ -1,0 +1,19 @@
+import userTypes from "./user.types/";
+
+const INITIAL_STATE = {
+    currentUser: null
+}
+
+const userReducer = (state=INITIAL_STATE, action) => {
+    switch(action.type) {
+        case userTypes.SIGN_IN_USER_SUCCESS: 
+            return {
+                ...state,
+                currentUser: 1
+            }
+        default:
+            return state
+    }
+}
+
+export default userReducer

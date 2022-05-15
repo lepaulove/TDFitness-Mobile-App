@@ -34,7 +34,7 @@ const headerStyles=StyleSheet.create({
        justifyContent:'space-between'
    }, 
    textHome:{
-       color:'#f11', 
+       color:'#911', 
        fontWeight:'bold',
        fontSize:25,
     },
