@@ -3,9 +3,9 @@ import 'react-native-gesture-handler';
 import { View, StatusBar } from 'react-native';
 import { useSelector } from 'react-redux';
 
-import UserDrawer from './../components/UserDrawer';
-import NonUserDrawer from './../components/NonUserDrawer';
-import globalStyles from './../styles/global.styles';
+import UserDrawer from './UserDrawer';
+import NonUserDrawer from './NonUserDrawer';
+import globalStyles from '../styles/global.styles';
 
 const mapState = ({user}) => ({
   currentUser: user.currentUser
