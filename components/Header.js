@@ -1,19 +1,19 @@
 import React from 'react';
-import {View,Text, StyleSheet, TouchableOpacity,} from 'react-native';
+import {SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Header({screen}){
  const navigation = useNavigation();
   return(
-    <View style={headerStyles.container}>
-        <TouchableOpacity onPress={()=>navigation.toggleDrawer()}>
-            <Entypo name="menu" size={24} color="white" />
+    <SafeAreaView style={headerStyles.container}>
+        <TouchableOpacity style={headerStyles.toggleDrawerButton} onPress={()=>navigation.toggleDrawer()}>
+            <Entypo name="menu" size={40} color="white" />
         </TouchableOpacity>
         <View>
             <Text style={headerStyles.textHome}>{screen}</Text>
         </View>
-    </View>
+    </SafeAreaView>
 
   )
 }
@@ -26,7 +26,7 @@ const headerStyles=StyleSheet.create({
        width:'100%',
        backgroundColor:'#000',
        elevation:5,
-       height:75,
+       height: Platform.OS === 'ios' ? 100 : 75,
        display:'flex',
        flexDirection:'row',
        paddingHorizontal:20,
@@ -37,11 +37,16 @@ const headerStyles=StyleSheet.create({
        color:'#911', 
        fontWeight:'bold',
        fontSize:25,
+       paddingRight: Platform.OS === 'ios' ? 20 : 0
     },
     text:{
         color:'#f11', 
         fontWeight:'bold',
         fontSize:25,
+     },
+     toggleDrawerButton:{
+        marginLeft: Platform.OS === 'ios' ? 20 : 0,
+        marginRight: Platform.OS === 'ios' ? 60 : 0
      }
 
 })

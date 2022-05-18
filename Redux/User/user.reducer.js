@@ -9,7 +9,7 @@ const userReducer = (state=INITIAL_STATE, action) => {
         case userTypes.SIGN_IN_USER_SUCCESS: 
             return {
                 ...state,
-                currentUser: 1
+                currentUser: action.payload
             }
         default:
             return state

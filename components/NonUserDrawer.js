@@ -11,7 +11,7 @@ import { MaterialCommunityIcons, Foundation } from '@expo/vector-icons';
 import ProfileScreen from './../screens/Profile';
 import SettingsScreen from './../screens/Settings';
 import SavedScreen from './../screens/Saved';
-import ReferScreen from './../screens/Refer';
+import LoginScreen from './../screens/Login';
 import DrawerItems from '../constants/NonUserDrawerItems';
 import Header from './../components/Header';
 import HomeScreen from './../screens/Home';
@@ -74,7 +74,7 @@ export default function NonUserDrawer() {
 
            }}
            component={
-                drawer.name==='Login' ? SettingsScreen
+                drawer.name==='Login' ? LoginScreen
                   : drawer.name==='TD Fitness' ? HomeScreen
                    : SavedScreen
            }

@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { View, Text, Button, ImageBackground } from "react-native";
+import { View, Text, Button, ImageBackground, StyleSheet, Platform } from "react-native";
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInSuccess } from '../Redux/User/user.actions';
+import globalStyles from '../styles/global.styles';
 
 const mapState = ({user}) => ({
     currentUser: user.currentUser
@@ -13,16 +15,49 @@ export default function HomeScreen() {
     const dispatch = useDispatch()
 
     const handleClick = () => {
-        dispatch(signInSuccess()) 
+        let user = currentUser ? null : 1
+        dispatch(signInSuccess(user)) 
+        console.log(`User value is: ${user}`)
     }
     
    return (
         <ImageBackground style={{flex: 1}} resizeMode='cover' source={backgroundImage}>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginHorizontal: 20 }}>
                 <Text style={{fontSize:32,fontWeight:'700', color:'#b11', paddingVertical:20}}>Welcome to TD Fitness</Text>
-                <View style={{paddingVertical:30, width:'100%'}}><Button title='Sign Up' color='#2f2f2f'/></View>
-                <View style={{paddingBottom:20, width:'100%'}}><Button title='Login' color='#2f2f2f'  onPress={handleClick}/></View>
+                <View style={homeScreenStyles.buttonContainers}>
+                    <TouchableOpacity style={homeScreenStyles.button}>
+                        <Text style={homeScreenStyles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={homeScreenStyles.buttonContainers}>
+                    <TouchableOpacity style={homeScreenStyles.button}>
+                        <Text style={homeScreenStyles.buttonText}>Sign Up</Text>
+                    </TouchableOpacity>
+                </View>
+                {/* <View style={homeScreenStyles.buttonContainers}><Button title='Sign Up' color='#2f2f2f'/></View>
+                <View style={homeScreenStyles.buttonContainers}><Button title='Login' color='#2f2f2f'  onPress={handleClick}/></View> */}
             </View>
         </ImageBackground>
    );
  }
+
+ const homeScreenStyles = StyleSheet.create({
+     buttonContainers: {
+        paddingVertical:20,
+        // marginVertical: Platform.OS === 'ios' ? 10 : 0,
+        width:'100%',
+        // backgroundColor: Platform.OS === 'ios' ? globalStyles.colors.greyBackground : '',
+        // color: Platform.OS === 'ios' ? globalStyles.colors.white : ''
+    },
+    button:{
+        backgroundColor: globalStyles.colors.greyBackground,
+        padding: 15,
+        borderRadius: 7,
+    },
+    buttonText: {
+        color: globalStyles.colors.white,
+        fontWeight: '700',
+        fontSize: 20,
+        textAlign: 'center'
+    }
+ })
