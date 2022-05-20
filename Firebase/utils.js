@@ -2,6 +2,8 @@
 import firebase from 'firebase/compat/app' 
 import 'firebase/compat/auth' 
 import 'firebase/compat/firestore'
+import { useDispatch } from 'react-redux';
+useDispatch
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -56,6 +58,25 @@ export const handleUserProfile = async({ userAuth, additionalData }) => {
       }
   }
   return userRef
+}
+
+export const emailSignIn = async ({email, password}) => {
+  try{
+    const { user } = await auth.signInWithEmailAndPassword(email, password)
+    const userRef = await handleUserProfile({userAuth: user})
+    const snapshot = await userRef.get()
+    return ({id: snapshot.id, ...snapshot.data()})
+  }catch(error){
+    console.log(error)
+  }
+}
+
+export const signOut = async () => {
+  try{
+    auth.signOut()
+  }catch(error){
+    console.log(error)
+  }
 }
 
 // Object {

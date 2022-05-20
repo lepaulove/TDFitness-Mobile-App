@@ -11,11 +11,12 @@ import { MaterialCommunityIcons, Foundation } from '@expo/vector-icons';
 import ProfileScreen from './../screens/Profile';
 import SettingsScreen from './../screens/Settings';
 import SavedScreen from './../screens/Saved';
-import LoginScreen from './../screens/Login';
+import RegisterScreen from '../screens/Register';
 import DrawerItems from '../constants/NonUserDrawerItems';
 import Header from './../components/Header';
 import HomeScreen from './../screens/Home';
 import globalStyles from './../styles/global.styles';
+import LoginScreen from '../screens/Login';
 
 export default function NonUserDrawer() {
 
@@ -74,8 +75,10 @@ export default function NonUserDrawer() {
 
            }}
            component={
-                drawer.name==='Login' ? LoginScreen
+                drawer.name==='Register' ? RegisterScreen
+                  : drawer.name==='KJ Fitness' ? HomeScreen
                   : drawer.name==='TD Fitness' ? HomeScreen
+                    :drawer.name==='Login' ? LoginScreen
                    : SavedScreen
            }
          />)
@@ -89,5 +92,5 @@ const screenOptions = {
     drawerActiveTintColor: globalStyles.colors.white,
     drawerInactiveTintColor:globalStyles.colors.mainColor,
     drawerActiveBackgroundColor:globalStyles.colors.mainColor,
-    drawerStyle: { marginVertical: 20, backgroundColor:globalStyles.colors.greyBackground },
+    drawerStyle: { marginVertical: 0, paddingTop: 40, backgroundColor:globalStyles.colors.greyBackground },
   }

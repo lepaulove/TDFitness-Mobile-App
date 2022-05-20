@@ -9,3 +9,7 @@ export const signUpUser = userCredentials => ({
     type: userTypes.SIGN_UP_USER,
     payload: userCredentials
 })
+
+export const signOutUser = () => ({
+    type: userTypes.SIGN_OUT_USER_SUCCESS
+})

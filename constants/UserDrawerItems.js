@@ -1,6 +1,6 @@
 export default [
     {
-        name:'TD Fitness',
+        name:'KJ Fitness',
         iconType:'Entypo',
         iconName:'home'
     },

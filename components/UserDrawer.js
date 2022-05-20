@@ -7,6 +7,7 @@ import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import ProfileScreen from './../screens/Profile';
 import SettingsScreen from './../screens/Settings';
@@ -16,10 +17,12 @@ import DrawerItems from '../constants/UserDrawerItems';
 import Header from './../components/Header';
 import HomeScreen from './../screens/Home';
 import globalStyles from './../styles/global.styles';
+import LoginScreen from '../screens/Register';
 
 export default function UserDrawer() {
 
     const Drawer = createDrawerNavigator()
+    const Stack = createNativeStackNavigator()
 
     return(
 <NavigationContainer>
@@ -77,12 +80,13 @@ export default function UserDrawer() {
              drawer.name==='Profile' ? ProfileScreen
                : drawer.name==='Settings' ? SettingsScreen
                  : drawer.name==='Saved Items' ? SavedScreen
-                  : drawer.name==='TD Fitness' ? HomeScreen
-                   : ReferScreen
+                  :drawer.name==='KJ Fitness' ? HomeScreen
+                    : drawer.name==='Refer a Friend!'? ReferScreen : SavedScreen
            }
          />)
        }
 </Drawer.Navigator>
+       
     </NavigationContainer>
     )
 }
@@ -91,5 +95,5 @@ const screenOptions = {
     drawerActiveTintColor: globalStyles.colors.white,
     drawerInactiveTintColor:globalStyles.colors.mainColor,
     drawerActiveBackgroundColor:globalStyles.colors.mainColor,
-    drawerStyle: { marginVertical: 20, backgroundColor:globalStyles.colors.greyBackground },
+    drawerStyle: { marginVertical: 0, paddingVertical: 20,  backgroundColor:globalStyles.colors.greyBackground },
   }
