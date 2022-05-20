@@ -1,6 +1,6 @@
 import 'react-native-reanimated';
 import 'react-native-gesture-handler';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContent } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { EvilIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
@@ -8,6 +8,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CustomDrawer from './CustomDrawer';
 
 import ProfileScreen from './../screens/Profile';
 import SettingsScreen from './../screens/Settings';
@@ -30,6 +31,7 @@ export default function UserDrawer() {
        drawerType="front"
        initialRouteName="Home"
        screenOptions={screenOptions}
+       drawerContent={props => <CustomDrawer {...props}/>}
         >
        {
          DrawerItems.map(drawer => <Drawer.Screen
@@ -95,5 +97,5 @@ const screenOptions = {
     drawerActiveTintColor: globalStyles.colors.white,
     drawerInactiveTintColor:globalStyles.colors.mainColor,
     drawerActiveBackgroundColor:globalStyles.colors.mainColor,
-    drawerStyle: { marginVertical: 0, paddingVertical: 20,  backgroundColor:globalStyles.colors.greyBackground },
+    drawerStyle: { backgroundColor:globalStyles.colors.greyBackground },
   }
