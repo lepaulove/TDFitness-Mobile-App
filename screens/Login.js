@@ -10,7 +10,7 @@ const mapState = ({user}) => ({
     currentUser: user.currentUser
 })
 
-export default function LoginScreen(){
+export default function LoginScreen({navigation}){
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('') 
     const dispatch = useDispatch()

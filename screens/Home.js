@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Text, ImageBackground, StyleSheet, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
+
 import { signOut } from '../Firebase/utils';
 import globalStyles from '../styles/global.styles';
 import { signOutUser } from '../Redux/User/user.actions';
-import LoginButtonContainer from '../components/LoginButtonContainer';
 
 const mapState = ({user}) => ({
     currentUser: user.currentUser
@@ -25,23 +24,36 @@ export default function HomeScreen({navigation}) {
     }
     
     return (
-        <>
-            <ImageBackground resizeMode='cover' style={{flex: 1}} source={backgroundImage}>
-                <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 }}>
-                    <Text style={{fontSize:32,fontWeight:'700', color:'#b11', paddingVertical:20}}>
-                        {welcomeMessage}
-                    </Text>
-                    {currentUser ? 
-                        <View style={homeScreenStyles.buttonContainers}>
-                            <TouchableOpacity style={homeScreenStyles.button} onPress={() => handleSignOutUser()}>
-                                <Text style={homeScreenStyles.buttonText}>LOGOUT</Text>
-                            </TouchableOpacity>
-                        </View>
-                    : <LoginButtonContainer navigation={navigation}/>
-                    }
-                </View>
-            </ImageBackground>
-        </>
+        <ImageBackground resizeMode='cover' style={{flex: 1}} source={backgroundImage}>
+            <View style={homeScreenStyles.buttonContainers}>
+                <TouchableOpacity style={homeScreenStyles.button} onPress={() => navigation.navigate( 'Login' )}>
+                    <Text style={homeScreenStyles.buttonText}>Login</Text>
+                </TouchableOpacity>
+            </View>
+            <View style={homeScreenStyles.buttonContainers}>
+                <TouchableOpacity style={homeScreenStyles.button} onPress={() => navigation.navigate( 'Register' )}>
+                    <Text style={homeScreenStyles.buttonText}>Register</Text>
+                </TouchableOpacity>
+            </View>
+        </ImageBackground>
+
+        // <>
+        //     <ImageBackground resizeMode='cover' style={{flex: 1}} source={backgroundImage}>
+        //         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 }}>
+        //             <Text style={{fontSize:32,fontWeight:'700', color:'#b11', paddingVertical:20}}>
+        //                 {welcomeMessage}
+        //             </Text>
+        //             {currentUser ? 
+        //                 <View style={homeScreenStyles.buttonContainers}>
+        //                     <TouchableOpacity style={homeScreenStyles.button} onPress={() => handleSignOutUser()}>
+        //                         <Text style={homeScreenStyles.buttonText}>LOGOUT</Text>
+        //                     </TouchableOpacity>
+        //                 </View>
+        //             : <LoginButtonContainer navigation={navigation}/>
+        //             }
+        //         </View>
+        //     </ImageBackground>
+        // </>
     );
  }
 
@@ -54,7 +66,7 @@ export default function HomeScreen({navigation}) {
     button:{
         backgroundColor: globalStyles.colors.greyBackground,
         padding: 15,
-        borderRadius: 7,
+        borderRadius: 7
     },
     buttonText: {
         color: globalStyles.colors.white,

@@ -19,6 +19,7 @@ import Header from './../components/Header';
 import HomeScreen from './../screens/Home';
 import globalStyles from './../styles/global.styles';
 import LoginScreen from '../screens/Register';
+import ProfileTabNavigator from '../Navigators/ProfileTabNavigator';
 
 export default function UserDrawer() {
 
@@ -26,10 +27,9 @@ export default function UserDrawer() {
     const Stack = createNativeStackNavigator()
 
     return(
-<NavigationContainer>
       <Drawer.Navigator
        drawerType="front"
-       initialRouteName="Home"
+       initialRouteName="Profile"
        screenOptions={screenOptions}
        drawerContent={props => <CustomDrawer {...props}/>}
         >
@@ -79,17 +79,17 @@ export default function UserDrawer() {
 
            }}
            component={
-             drawer.name==='Profile' ? ProfileScreen
+             drawer.name==='Profile' ? ProfileTabNavigator
                : drawer.name==='Settings' ? SettingsScreen
                  : drawer.name==='Saved Items' ? SavedScreen
                   :drawer.name==='KJ Fitness' ? HomeScreen
-                    : drawer.name==='Refer a Friend!'? ReferScreen : SavedScreen
+                    : drawer.name==='Refer a Friend!'? ReferScreen
+                      : drawer.name=== 'Login' ? LoginScreen : SavedScreen
            }
          />)
        }
 </Drawer.Navigator>
        
-    </NavigationContainer>
     )
 }
 

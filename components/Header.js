@@ -2,6 +2,7 @@ import React from 'react';
 import {SafeAreaView, View, Text, StyleSheet, TouchableOpacity, Platform} from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import globalStyles from '../styles/global.styles';
 
 export default function Header({screen}){
  const navigation = useNavigation();
@@ -31,7 +32,9 @@ const headerStyles=StyleSheet.create({
        flexDirection:'row',
        paddingHorizontal:20,
        alignItems:'center',
-       justifyContent:'space-between'
+       justifyContent:'space-between',
+       borderTopColor: Platform.OS === 'ios' ? globalStyles.colors.black : globalStyles.colors.mainColor,
+       borderWidth: 5
    }, 
    textHome:{
        color:'#911', 
