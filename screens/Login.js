@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View, Button } from 'react-native'
 import React, { useState } from 'react'
-import { TextInput } from 'react-native-gesture-handler'
+import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import { emailSignIn } from '../Firebase/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { signInSuccess } from '../Redux/User/user.actions'
 import globalStyles from '../styles/global.styles'
+import HomeScreen from './Home'
 
 const mapState = ({user}) => ({
     currentUser: user.currentUser
@@ -42,17 +43,17 @@ export default function LoginScreen(){
             placeholderTextColor={globalStyles.colors.mainColor}
             />
             <View style={{
-        marginRight:40,
-        marginLeft:40,
+        marginHorizontal:40,
         marginTop:10,
-        paddingTop:10,
-        paddingBottom:10,
+        paddingVertical: 10,
         backgroundColor:globalStyles.colors.mainColor,
         borderRadius:10,
         borderWidth: 3,
         borderColor: globalStyles.colors.black
       }}>
-            <Button title='LOGIN' onPress={() => handleUserLogin()} color={Platform.OS === 'ios' ? '#fff' : '#911'} />
+        <TouchableOpacity onPress={() => handleUserLogin()} style={styles.button}>
+            <Text style={styles.buttonText}>LOGIN</Text>
+        </TouchableOpacity>
           </View>
       </View>
       );
@@ -75,4 +76,13 @@ export default function LoginScreen(){
         borderColor: globalStyles.colors.mainColor,
         color: globalStyles.colors.white,
       },
+      button:{
+        width: '100%'
+      },
+      buttonText:{
+          color:globalStyles.colors.white,
+          fontSize: 24,
+          textAlign: 'center',
+          fontWeight:'700'
+      }
     });
