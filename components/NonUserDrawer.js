@@ -77,9 +77,10 @@ export default function NonUserDrawer() {
            component={
                 drawer.name==='Register' ? RegisterScreen
                   : drawer.name==='KJ Fitness' ? HomeScreen
-                  : drawer.name==='TD Fitness' ? HomeScreen
-                    :drawer.name==='Login' ? LoginScreen
-                   : SavedScreen
+                    : drawer.name==='TD Fitness' ? HomeScreen
+                      :drawer.name==='Login' ? LoginScreen
+                        : drawer.name=== 'Login' ? LoginScreen
+                          : SavedScreen
            }
          />)
        }
