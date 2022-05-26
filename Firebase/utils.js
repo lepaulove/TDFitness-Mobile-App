@@ -67,7 +67,7 @@ export const emailSignIn = async ({email, password}) => {
     const snapshot = await userRef.get()
     return ({id: snapshot.id, ...snapshot.data()})
   }catch(error){
-    console.log(error)
+    alert(error.message)
   }
 }
 

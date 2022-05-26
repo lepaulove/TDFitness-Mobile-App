@@ -49,7 +49,8 @@ const homeScreenStyles = StyleSheet.create({
    },
    button:{
        backgroundColor: globalStyles.colors.greyBackground,
-       padding: 15,
+       height: 40,
+       
        borderRadius: 7,
        backgroundColor: globalStyles.colors.mainColor
    },
