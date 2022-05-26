@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 
 import UserDrawer from './UserDrawer';
-import HomeStackNavigator from '../Navigators/HomeStackNavigator';
+import HomeStackNavigator from '../Navigators/HomeStackNavigator'
 
 const mapState = ({user}) => ({
   currentUser: user.currentUser
