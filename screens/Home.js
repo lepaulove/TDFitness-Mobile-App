@@ -25,15 +25,17 @@ export default function HomeScreen({navigation}) {
     
     return (
         <ImageBackground resizeMode='cover' style={{flex: 1}} source={backgroundImage}>
-            <View style={homeScreenStyles.buttonContainers}>
-                <TouchableOpacity style={homeScreenStyles.button} onPress={() => navigation.navigate( 'Login' )}>
-                    <Text style={homeScreenStyles.buttonText}>Login</Text>
-                </TouchableOpacity>
-            </View>
-            <View style={homeScreenStyles.buttonContainers}>
-                <TouchableOpacity style={homeScreenStyles.button} onPress={() => navigation.navigate( 'Register' )}>
-                    <Text style={homeScreenStyles.buttonText}>Register</Text>
-                </TouchableOpacity>
+            <View style={{flex: 1, alignItems: 'center', justifyContent:'center', width:'100%', paddingHorizontal:8}}>
+                <View style={homeScreenStyles.buttonContainers}>
+                    <TouchableOpacity style={homeScreenStyles.button} onPress={() => navigation.navigate( 'Login' )}>
+                        <Text style={homeScreenStyles.buttonText}>Login</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={homeScreenStyles.buttonContainers}>
+                    <TouchableOpacity style={homeScreenStyles.button} onPress={() => navigation.navigate( 'Register' )}>
+                        <Text style={homeScreenStyles.buttonText}>Register</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </ImageBackground>
 
@@ -59,7 +61,7 @@ export default function HomeScreen({navigation}) {
 
  const homeScreenStyles = StyleSheet.create({
      buttonContainers: {
-        paddingVertical:20,
+        paddingVertical:30,
         width:'100%',
         // backgroundColor: Platform.OS === 'ios' ? globalStyles.colors.greyBackground : '',
     },

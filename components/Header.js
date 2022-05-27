@@ -33,8 +33,7 @@ const headerStyles=StyleSheet.create({
        paddingHorizontal:20,
        alignItems:'center',
        justifyContent:'space-between',
-       borderTopColor: Platform.OS === 'ios' ? globalStyles.colors.black : globalStyles.colors.mainColor,
-       borderWidth: 5
+    //    borderTopColor: Platform.OS === 'ios' ? globalStyles.colors.black : globalStyles.colors.mainColor,
    }, 
    textHome:{
        color:'#911', 

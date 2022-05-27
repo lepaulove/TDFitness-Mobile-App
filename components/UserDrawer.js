@@ -1,16 +1,14 @@
 import 'react-native-reanimated';
 import 'react-native-gesture-handler';
-import { createDrawerNavigator, DrawerContent } from '@react-navigation/drawer';
-import { NavigationContainer } from '@react-navigation/native';
+import { StatusBar, Platform } from 'react-native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { EvilIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CustomDrawer from './CustomDrawer';
 
-import ProfileScreen from './../screens/Profile';
 import SettingsScreen from './../screens/Settings';
 import SavedScreen from './../screens/Saved';
 import ReferScreen from './../screens/Refer';
@@ -24,10 +22,14 @@ import ProfileTabNavigator from '../Navigators/ProfileTabNavigator';
 export default function UserDrawer() {
 
     const Drawer = createDrawerNavigator()
-    const Stack = createNativeStackNavigator()
 
     return(
-      <Drawer.Navigator
+      <>
+      <StatusBar 
+        backgroundColor={globalStyles.colors.mainColor}
+        barStyle={'light-content'}
+      />
+        <Drawer.Navigator
        drawerType="front"
        initialRouteName="Profile"
        screenOptions={screenOptions}
@@ -89,6 +91,7 @@ export default function UserDrawer() {
          />)
        }
 </Drawer.Navigator>
+      </>
        
     )
 }
@@ -97,5 +100,5 @@ const screenOptions = {
     drawerActiveTintColor: globalStyles.colors.white,
     drawerInactiveTintColor:globalStyles.colors.mainColor,
     drawerActiveBackgroundColor:globalStyles.colors.mainColor,
-    drawerStyle: { backgroundColor:globalStyles.colors.greyBackground },
+    drawerStyle: { backgroundColor:globalStyles.colors.greyBackground, },
   }

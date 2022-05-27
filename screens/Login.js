@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { TextInput } from 'react-native-gesture-handler'
 import { emailSignIn } from '../Firebase/utils'
 import { useDispatch, useSelector } from 'react-redux'
 import { signInSuccess } from '../Redux/User/user.actions'
