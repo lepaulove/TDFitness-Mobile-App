@@ -29,7 +29,7 @@ export const handleSignUp = ({ displayName, email, password, confirmPassword}) =
         const { user } = userCredentials
         console.log(user)
         handleUserProfile({userAuth: user, additionalData:{ displayName }})
-    }).catch(error => {console.log(error.message)})
+    }).catch(error => {alert(error.message)})
 }
 
 export const handleUserProfile = async({ userAuth, additionalData }) => {
@@ -53,8 +53,8 @@ export const handleUserProfile = async({ userAuth, additionalData }) => {
               userRoles,
               ...additionalData
           })
-      }catch(err){
-          console.log(err)
+      }catch(error){
+          console.log(error)
       }
   }
   return userRef

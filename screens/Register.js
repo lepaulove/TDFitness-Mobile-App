@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { View, StyleSheet, TextInput, Button, Platform, Text } from "react-native";
+import { View, StyleSheet, TextInput, TouchableOpacity, Platform, Text } from "react-native";
 import { handleSignUp } from "../Firebase/utils";
 import globalStyles from "../styles/global.styles";
 
@@ -13,14 +13,14 @@ export default function RegisterScreen() {
   return (
 
     <View style={styles.container}>
-      <View style={{alignItems:'center', justifyContent:'center', paddingBottom:80}}>
-                <Text style={{fontSize: 40, fontWeight:'700', color:globalStyles.colors.mainColor}}>Register</Text>
+      <View style={{alignItems:'center', justifyContent:'center', paddingBottom:20}}>
+                <Text style={{fontSize: 40, fontWeight:'700', color:globalStyles.colors.mainColor}}>REGISTER</Text>
             </View>
         <TextInput
         style={styles.input}
         onChangeText={onChangeName}
         placeholder='Name'
-        value={displayName.trim()}
+        value={displayName}
         placeholderTextColor={globalStyles.colors.mainColor}
         />
         <TextInput
@@ -47,20 +47,12 @@ export default function RegisterScreen() {
         secureTextEntry={true}
         placeholderTextColor={globalStyles.colors.mainColor}
         />
-        <View style={{
-    marginRight:40,
-    marginLeft:40,
-    marginTop:10,
-    paddingTop:10,
-    paddingBottom:10,
-    backgroundColor:globalStyles.colors.mainColor,
-    borderRadius:10,
-    borderWidth: 3,
-    borderColor: globalStyles.colors.black
-  }}>
-        <Button title='Sign Up' onPress={() => handleSignUp({email, password, confirmPassword, displayName})} color={Platform.OS === 'ios' ? '#fff' : '#911'} />
+    <View style={styles.buttonContainer}>
+        <TouchableOpacity onPress={() => handleSignUp({email, password, confirmPassword, displayName})} style={styles.button}>
+            <Text style={styles.buttonText}>SIGN UP</Text>
+        </TouchableOpacity>
+          </View>
       </View>
-  </View>
   );
 };
 
@@ -78,6 +70,25 @@ const styles = StyleSheet.create({
     borderWidth: 3,
     padding: 10,
     borderRadius:7,
+    borderColor: globalStyles.colors.mainColor,
+    color:globalStyles.colors.white
+  },
+  buttonContainer:{
+    marginHorizontal:40,
+    marginVertical: 15,
+    paddingVertical: 10,
+    // backgroundColor:globalStyles.colors.mainColor,
+    borderRadius:10,
+    borderWidth: 3,
     borderColor: globalStyles.colors.mainColor
   },
+  button:{
+    width: '100%'
+  },
+  buttonText:{
+      color:globalStyles.colors.white,
+      fontSize: 24,
+      textAlign: 'center',
+      fontWeight:'700'
+  }
 });

@@ -6,6 +6,7 @@ import HomeScreen from '../screens/Home';
 import LoginScreen from '../screens/Login';
 import RegisterScreen from '../screens/Register';
 import globalStyles from '../styles/global.styles';
+import Header from '../components/Header';
 
 export default function HomeStackNavigator() {
 
@@ -18,7 +19,12 @@ export default function HomeStackNavigator() {
         barStyle={'light-content'}
         />
         <Stack.Navigator
-        screenOptions={{headerShown: false}}
+        screenOptions={{headerShown:true,
+            header: ({ scene }) => {
+              return (
+         <Header screen={'Home'}/>
+              );
+            }}}
         >
         
         <Stack.Screen name='Home' component={HomeScreen} />

@@ -23,7 +23,7 @@ export default function LoginScreen({navigation}){
     }
     return (
         <View style={styles.container}>
-            <View style={{alignItems:'center', justifyContent:'center', paddingBottom:80}}>
+            <View style={{alignItems:'center', justifyContent:'center', paddingBottom:20}}>
                 <Text style={{fontSize: 40, fontWeight:'700', color:globalStyles.colors.mainColor}}>LOGIN</Text>
             </View>
             <TextInput
@@ -42,15 +42,7 @@ export default function LoginScreen({navigation}){
             secureTextEntry={true}
             placeholderTextColor={globalStyles.colors.mainColor}
             />
-            <View style={{
-        marginHorizontal:40,
-        marginTop:10,
-        paddingVertical: 10,
-        backgroundColor:globalStyles.colors.mainColor,
-        borderRadius:10,
-        borderWidth: 3,
-        borderColor: globalStyles.colors.black
-      }}>
+            <View style={styles.buttonContainer}>
         <TouchableOpacity onPress={() => handleUserLogin()} style={styles.button}>
             <Text style={styles.buttonText}>LOGIN</Text>
         </TouchableOpacity>
@@ -69,12 +61,21 @@ export default function LoginScreen({navigation}){
       },
       input: {
         height: 60,
-        marginVertical: 12,
+        marginTop: 40,
         borderWidth: 3,
         padding: 10,
         borderRadius:7,
         borderColor: globalStyles.colors.mainColor,
         color: globalStyles.colors.white,
+      },
+      buttonContainer:{
+        marginHorizontal:40,
+        marginTop:50,
+        paddingVertical: 10,
+        // backgroundColor:globalStyles.colors.mainColor,
+        borderRadius:10,
+        borderWidth: 3,
+        borderColor: globalStyles.colors.mainColor
       },
       button:{
         width: '100%'
