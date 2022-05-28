@@ -24,7 +24,7 @@ export default function HomeScreen({navigation}) {
     }
     
     return (
-        <ImageBackground resizeMode='cover' style={{flex: 1}} source={backgroundImage}>
+        <ImageBackground resizeMode='cover' style={{flex: 1, width:'100%', height:'100%'}} source={require('../assets/kj_fitness_home.png')}>
             <View style={{flex: 1, alignItems: 'center', justifyContent:'center', width:'100%', paddingHorizontal:8}}>
                 <View style={homeScreenStyles.buttonContainers}>
                     <TouchableOpacity style={homeScreenStyles.button} onPress={() => navigation.navigate( 'Login' )}>
@@ -38,24 +38,6 @@ export default function HomeScreen({navigation}) {
                 </View>
             </View>
         </ImageBackground>
-
-        // <>
-        //     <ImageBackground resizeMode='cover' style={{flex: 1}} source={backgroundImage}>
-        //         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', marginHorizontal: 10 }}>
-        //             <Text style={{fontSize:32,fontWeight:'700', color:'#b11', paddingVertical:20}}>
-        //                 {welcomeMessage}
-        //             </Text>
-        //             {currentUser ? 
-        //                 <View style={homeScreenStyles.buttonContainers}>
-        //                     <TouchableOpacity style={homeScreenStyles.button} onPress={() => handleSignOutUser()}>
-        //                         <Text style={homeScreenStyles.buttonText}>LOGOUT</Text>
-        //                     </TouchableOpacity>
-        //                 </View>
-        //             : <LoginButtonContainer navigation={navigation}/>
-        //             }
-        //         </View>
-        //     </ImageBackground>
-        // </>
     );
  }
 
