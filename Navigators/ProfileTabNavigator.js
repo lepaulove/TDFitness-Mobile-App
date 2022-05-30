@@ -12,6 +12,7 @@ import WorkoutScreen from '../screens/Workout';
 import UpdateStatsScreen from '../screens/UpdateStats';
 import ReferScreen from '../screens/Refer';
 import WorkoutSession from '../screens/WorkoutSession';
+import WorkoutStackNavigator from './WorkoutStackNavigator';
 
 const mapState = ({ user}) => ({
    currentUser: user.currentUser
@@ -35,7 +36,7 @@ return (
       />
       <Tab.Screen name='START A WORKOUT' options={{
       tabBarActiveTintColor: globalStyles.colors.mainColor,
-      tabBarIcon:({focused}) => <AntDesign color={focused ? globalStyles.colors.mainColor : globalStyles.colors.black} name="play" size={focused ? 32 : 24} />}} component={WorkoutScreen}
+      tabBarIcon:({focused}) => <AntDesign color={focused ? globalStyles.colors.mainColor : globalStyles.colors.black} name="play" size={focused ? 32 : 24} />}} component={WorkoutStackNavigator}
       />
       <Tab.Screen name='UPDATE STATS' options={{
       tabBarActiveTintColor: globalStyles.colors.mainColor,
