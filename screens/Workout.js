@@ -1,41 +1,62 @@
 import { StyleSheet, Text, View, TouchableOpacity, FlatList } from 'react-native'
 import React, { useState } from 'react'
 import { firestore } from '../Firebase/utils'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { createNewWorkout } from '../Redux/Workouts/workouts.actions'
 
-import WorkoutSession from './WorkoutSession'
-
-const mapState = ({user}) => ({
+const mapStateuserState = ({user}) => ({
   currentUser: user.currentUser
+})
+
+const mapWorkoutState = ({workouts}) => ({
+  currentWorkout: workouts.currentWorkoutId
 })
 
 export default function WorkoutScreen({navigation}) {
 
-  const {currentUser} = useSelector(mapState)
-  const [workouts, setWorkouts] = useState([])
+  const { currentUser } = useSelector(mapStateuserState)
+  const { currentWorkout } = useSelector(mapWorkoutState)
+  const dispatch = useDispatch()
 
-  const handleAddWorkout = workout => {
-    return new Promise((resolve, reject) => {
-      console.log(workout)
-        firestore.collection('workouts')
-        .doc()
-        .set(workout)
-        .then(() => {
-            resolve()
-            navigation.navigate('Workout Session')
-        })
-        .catch(err =>{
-            reject(err)
-        })
-    })
+  const handleAddWorkout = async workout => {
+    if(currentWorkout){
+      navigation.navigate('Workout Session')
+    }else{
+      const newWorkoutAdded = await firestore.collection('workouts').add(workout)
+      dispatch(createNewWorkout(newWorkoutAdded.id))
+      navigation.navigate('Workout Session')
+    }
   }
+  // const handleAddWorkout = workout => {
+  //   return new Promise((resolve, reject) => {
+  //     console.log(workout)
+  //       firestore.collection('workouts')
+  //       .doc()
+  //       .set(workout)
+  //       // .then(docRef => {
+  //       //   console.log(docRef.id)
+  //       // })
+  //       .then(() => {
+  //           resolve()
+  //           navigation.navigate('Workout Session')
+  //       })
+  //       .catch(err =>{
+  //           reject(err)
+  //       })
+  //   })
+  // }
 
 const workout = {
   uid: currentUser.id,
   workout1:{
     uid: currentUser.id,
-    date: new Date()
-    }
+    date: new Date(),
+    activities: [
+      { }, 
+      { },
+      { }
+    ]
+  }
 }
 
 const handleFetchWorkouts = () => {
@@ -51,8 +72,8 @@ const handleFetchWorkouts = () => {
               }
           })
           resolve(workoutsArray)
-          setWorkouts(workoutsArray)
-          console.log(workouts)
+          // console.log(workoutsArray)
+          navigation.navigate('Workout History', {workouts: workoutsArray})
       })
       .catch(err => {
           reject(err)
@@ -60,15 +81,16 @@ const handleFetchWorkouts = () => {
   })
 }
 
+
   return (
     <View style={{flex: 1}}>
       <View style={styles.container}>
         <TouchableOpacity style={styles.buttonContainer} onPress={() => handleAddWorkout(workout)}>
-          <Text style={styles.buttonText}>Start a New Workout!</Text>
+          <Text style={styles.buttonText}>{currentWorkout ? 'Resume Workout!' : 'Start a New Workout!'}</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.container}>
-        <TouchableOpacity style={styles.buttonContainer} onPress={() => handleFetchWorkouts(currentUser.id)}>
+        <TouchableOpacity style={styles.buttonContainer} onPress={() => handleFetchWorkouts()}>
           <Text style={styles.buttonText}>View Workout History</Text>
         </TouchableOpacity>
       </View>

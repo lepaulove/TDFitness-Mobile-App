@@ -11,7 +11,7 @@ import HistoryScreen from '../screens/History';
 import WorkoutScreen from '../screens/Workout';
 import UpdateStatsScreen from '../screens/UpdateStats';
 import ReferScreen from '../screens/Refer';
-import WorkoutSession from '../screens/WorkoutSession';
+import WorkoutHistory from '../screens/WorkoutHistory';
 import WorkoutStackNavigator from './WorkoutStackNavigator';
 
 const mapState = ({ user}) => ({

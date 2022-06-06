@@ -25,7 +25,7 @@ export default function HomeScreen({navigation}) {
     
     return (
         <ImageBackground resizeMode='cover' style={{flex: 1, width:'100%', height:'100%'}} source={require('../assets/kj_fitness_home.png')}>
-            <View style={{flex: 1, alignItems: 'center', paddingTop:210}}>
+            <View style={{flex: 1, alignItems: 'center', paddingTop:200}}>
                 <Text style={{fontSize: 60, color: globalStyles.colors.mainColor, fontWeight: '800'}}>KJ Fitness</Text>
             </View>
             <View style={{flex: 3, alignItems: 'center', justifyContent:'center', width:'100%', paddingHorizontal:8, position:'absolute', top: 350}}>
