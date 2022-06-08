@@ -8,11 +8,8 @@ const WorkoutHistory = ({navigation, route}) => {
     
     useEffect(() => {
         setWorkouts(route.params.workouts)
-    }, [])  
-
-    console.log(workouts)
+    }, [])
   return (
-      
     <ScrollView>
       {workouts.map((item, index) => {
           if(item !== undefined){

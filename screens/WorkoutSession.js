@@ -8,7 +8,7 @@ const mapState = ({workouts}) => ({
     currentWorkoutId: workouts.currentWorkoutId
 })
 
-const WorkoutSession = ({navigation}) => {
+const WorkoutSession = ({navigation, route}) => {
 
     const { currentWorkoutId } = useSelector(mapState)
     const dispatch = useDispatch()
@@ -24,11 +24,10 @@ const WorkoutSession = ({navigation}) => {
       </TouchableOpacity>
       <View>
           {Object.keys(workoutOptions).map((item, index) => {
-              console.log(item)
               return(
-            <TouchableOpacity key={index} onPress={() => console.log(item)}>
+            <TouchableOpacity key={index} onPress={() => navigation.navigate('Workout List', {category: item})}>
                 <View style={{justifyContent:'center', alignItems:'center', padding: 30, backgroundColor: 'grey', margin:5}}>
-                    {<Text style={{}}>{item}</Text>}
+                    {<Text>{item}</Text>}
                 </View>
             </TouchableOpacity>
           )
