@@ -18,17 +18,29 @@ const mapState = ({ user}) => ({
    currentUser: user.currentUser
 })
 
+const mapWorkoutState = ({workouts}) => ({
+   currentWorkoutId: workouts.currentWorkoutId
+})
+
 export default function ProfileTabNavigator({navigation}) {
 
    const { currentUser } = useSelector(mapState)
    const Tab = createBottomTabNavigator()
+   const { currentWorkoutId } = useSelector(mapWorkoutState)
 
 return (
 <>
-   <View style={{alignItems: 'center', paddingTop:Platform.OS === 'ios' ? 140 : 110, backgroundColor:globalStyles.colors.mainColor, height: 350}}>
-      <Image source={require('../assets/kj_fitness_home.png')} style={{height:150, width: 150, borderRadius:100}}/>
-      <Text style={{color:globalStyles.colors.black, fontSize:24, fontWeight:'700', paddingVertical:10}}>Welcome Back {currentUser.displayName}!</Text>
-   </View>
+   {/* {
+      !currentWorkoutId ?  */}
+      {/* <View style={{alignItems: 'center', paddingTop:Platform.OS === 'ios' ? 140 : 110, backgroundColor:globalStyles.colors.mainColor, height: 350}}>
+         <Image source={require('../assets/kj_fitness_home.png')} style={{height:150, width: 150, borderRadius:100}}/>
+         <Text style={{color:globalStyles.colors.black, fontSize:24, fontWeight:'700', paddingVertical:10}}>Welcome Back {currentUser.displayName}!</Text>
+      </View>  */}
+   {/*  : 
+       <View>
+
+       </View>
+    } */}
    <Tab.Navigator>
       <Tab.Screen name='HISTORY' options={{
       tabBarActiveTintColor: globalStyles.colors.mainColor,

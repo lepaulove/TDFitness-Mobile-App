@@ -8,6 +8,7 @@ const mapState = ({ user}) => ({
    currentUser: user.currentUser
 })
 
+
 export default function ProfileScreen() {
 
    const { currentUser } = useSelector(mapState)
